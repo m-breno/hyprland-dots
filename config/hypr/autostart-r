@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# variables
+config=$HOME/.config/hypr
+scripts=$config/scripts
+
+
+# waybar
+$scripts/launch_waybar &
+$scripts/tools/dynamic &
+

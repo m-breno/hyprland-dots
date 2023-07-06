@@ -13,6 +13,7 @@ cd ~/temp
 sudo pacman -S --needed --noconfirm git xdg-user-dirs
 xdg-user-dirs-update ~/
 
+echo "AUR helper"
 if [ $LANG = "pt_BR.UTF-8" ]
 then
 	echo "Instalar yay ou paru? (outros: apeans escreva)"
@@ -27,6 +28,7 @@ do
 		paru)	AUR=paru ;;
 		*)      AUR=$input_text ;;
     esac
+    break;
 done
 
 
@@ -41,7 +43,7 @@ cd $AUR
 makepkg -si
 
 #Install apps/Instalar apps
-apps=nvim
+apps=neovim hyprland-git waybar-hyprland-git cava python rustup kitty fish rofi-lbonn-wayland xdg-desktop-portal-hyprland-git tty-clock-git swaylockd grim slurp starship jq dunst wl-clipboard wl-clipboard-persist-git swaylock-effects-git swww sddm-git
 
 if [ $LANG = "pt_BR.UTF-8" ]
 then
@@ -66,14 +68,7 @@ else
       3) Choose. Choose the packages you want to install.
       Your choice:"
 fi
-while read input_text
-do
-	case $input_text in
-		1)	yay -S --needed --noconfirm $apps ;;
-		2)	echo $apps ;;
-		3)	read capps && yay -S --needed --noconfirm $capps ;;
-	esac
-done
+
 
 #Copy dotfiles
 if [ $LANG = "pt_BR.UTF-8" ]
@@ -85,34 +80,29 @@ fi
 while read input_text
 do
     case $input_text in
-		y)	    COPY=1 ;;
-        s)	    COPY=1 ;;
-        Y)	    COPY=1 ;;
-        S)	    COPY=1 ;;
-		n)	    COPY=0 ;;
-        N)	    COPY=0 ;;
+		y|Y|s|S|1)	    COPY=1 ;;
+        n|N|0)	    COPY=0 ;;
 		*)      COPY=yes ;;
     esac
+    break;
 done
 
 if [ $COPY = 1 ]
 then
-    cd ..
-    git clone https://github.com/mbreno-op/hyprland-dots
-    cd hyprland-dots
+    cd ~/temp/hyprland-dots
     mkdir ~/.config
     cp -rv ./config/* ~/.config/
-    if [ $LANG = "pt_BR.UTF-8" ]
-    then
-	    echo "Pronto."
-    else
-	    echo "Done."
-    fi
+    sudo systemctl enable sddm.service
+    sudo cp -rv ./mirrorlist /etc/pacman.d/mirrorlist
+    sudo cp -rv ./pacman.conf /etc/pacman.conf
+
 else
-    if [ $LANG = "pt_BR.UTF-8" ]
+    
+fi
+if [ $LANG = "pt_BR.UTF-8" ]
     then
 	    echo "Pronto."
     else
 	    echo "Done."
     fi
-fi
+break

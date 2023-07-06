@@ -1,0 +1,581 @@
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/button_effect_icon_glow.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Replace the button background-colors with a glow effect */
+/* Edit the color choices how you see fit */
+:root{
+  --uc-icon-glow-primary: #fab387;
+  --uc-icon-glow-secondary: #fab387;
+  --uc-icon-glow-hover-primary: #fab387;
+  --uc-icon-glow-hover-secondary: #fab387;
+}
+
+/* Make backgrounds transparent */
+.close-icon,
+.urlbar-icon,
+.urlbar-icon-wrapper,
+toolbar .toolbarbutton-1,
+#tabbrowser-tabs toolbarbutton,
+toolbar toolbarbutton > .toolbarbutton-icon,
+toolbar toolbarbutton > .toolbarbutton-badge-stack,
+.titlebar-button,
+#identity-box,
+.identity-box-button,
+#tracking-protection-icon-container,
+.findbar-textbox~toolbarbutton,
+toolbarbutton.scrollbutton-up,
+toolbarbutton.scrollbutton-down,
+toolbarbutton#scrollbutton-up,
+toolbarbutton#scrollbutton-down{
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+/* Glow effects on hover */
+.close-icon:hover,
+.urlbar-history-dropmarker:hover,
+#page-action-buttons > .urlbar-icon:hover,
+.urlbar-icon-wrapper:hover > .urlbar-icon,
+toolbar .toolbarbutton-1:not([disabled]):hover .toolbarbutton-icon,
+#TabsToolbar toolbarbutton:not([disabled]):hover .toolbarbutton-icon,
+toolbar #downloads-button:hover #downloads-indicator-anchor,
+.identity-box-button:hover,
+#tracking-protection-icon:hover,
+.findbar-textbox~toolbarbutton:not([disabled]):hover,
+toolbarbutton.scrollbutton-up:not([disabled]):hover,
+toolbarbutton.scrollbutton-down:not([disabled]):hover,
+toolbarbutton#scrollbutton-up:not([disabled]):hover,
+toolbarbutton#scrollbutton-down:not([disabled]):hover{ 
+  filter: drop-shadow(0 0 2px var(--uc-icon-glow-secondary)) drop-shadow(0 0 1px var(--uc-icon-glow-primary))
+}
+
+/* Active states and close window button hover state */
+#titlebar .titlebar-buttonbox > .titlebar-close:hover > .toolbarbutton-icon,
+.close-icon:active,
+.urlbar-history-dropmarker:active,
+#page-action-buttons > .urlbar-icon:active,
+#page-action-buttons > .urlbar-icon[open],
+.urlbar-icon-wrapper:active > .urlbar-icon,
+.urlbar-icon-wrapper[open] > .urlbar-icon,
+toolbar toolbarbutton:not([disabled]):active .toolbarbutton-icon,
+toolbar toolbarbutton:not([disabled])[open] .toolbarbutton-icon,
+#TabsToolbar toolbarbutton:not([disabled]):active .toolbarbutton-icon,
+toolbar #downloads-button:active #downloads-indicator-anchor,
+toolbar #downloads-button[open] #downloads-indicator-anchor,
+.identity-box-button:active,
+#tracking-protection-icon-container[open] #tracking-protection-icon,
+.findbar-textbox~toolbarbutton:not([disabled]):active,
+toolbarbutton.scrollbutton-up:active,
+toolbarbutton.scrollbutton-down:active,
+toolbarbutton#scrollbutton-up:active,
+toolbarbutton#scrollbutton-down:active{ 
+  filter: drop-shadow(0 0 2px var(--uc-icon-glow-hover-secondary)) drop-shadow(0 0 1px var(--uc-icon-glow-hover-primary))
+}
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/button_effect_scale_onclick.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Effect */
+.urlbar-icon,
+.toolbarbutton-icon,
+.menuitem-iconic .menu-iconic-icon{
+  transition: transform 83ms linear !important;
+}
+
+toolbar .toolbarbutton-1 > .toolbarbutton-icon{
+  transition: padding 83ms linear !important;
+}
+
+toolbarbutton#scrollbutton-up:active > .toolbarbutton-icon,
+toolbarbutton:not(.toolbarbutton-1):active > .toolbarbutton-icon,
+toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-badge-stack > .toolbarbutton-icon,
+.menuitem-iconic:active .menu-iconic-icon,
+.urlbar-page-action:active > .urlbar-icon{
+  transform: scale(0.6) !important;
+}
+toolbarbutton#scrollbutton-down:active > .toolbarbutton-icon{ transform: scale(-0.6) !important; }
+
+toolbar .toolbarbutton-1:not([disabled]):active > .toolbarbutton-icon{
+  padding: calc(var(--toolbarbutton-inner-padding) + 3px) !important;
+}
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/centered_tab_label.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+.tab-label-container{
+  display: grid;
+  justify-content: safe center; /* Fx <112 compatibility */
+  align-items: safe center; /* Fx <112 compatibility */
+  align-content: center;
+}
+
+.tab-secondary-label{
+  -moz-box-pack: center; /* Fx <112 compatibility */
+  justify-content: center;
+}
+
+.tab-label,
+.tab-secondary-label{ overflow: hidden }
+
+.tabbrowser-tab[selected]:not(:hover) .tab-label-container:not([labeldirection="rtl"]),
+#tabbrowser-tabs:not([closebuttons="activetab"]) .tabbrowser-tab:not(:hover,[pinned]) .tab-label-container:not([labeldirection="rtl"]){
+  margin-inline-end: 7px;
+}
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/hide_tabs_with_one_tab.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Makes tabs toolbar items zero-height initially and sets enlarge them to fill up space equal to tab-min-height set on tabs. Optionally use privatemode_indicator_as_menu_button.css to replace main menu icon with private browsing indicator while tabs are hidden. 
+
+This will NOT work correctly if you have hidden tabs such as with tab groups extensions
+*/
+
+/* This style causes CSD window controls to disappear on linux, but you can kind of work around that by using window_control_fallback_for_custom_windows_theme.css */
+
+:root[sizemode="normal"] #nav-bar{ --uc-window-drag-space-width: 20px }
+
+#titlebar{ -moz-appearance: none !important; }
+#TabsToolbar{ min-height: 0px !important }
+
+#tabbrowser-tabs,
+#tabbrowser-arrowscrollbox{ min-height: 0 !important; }
+
+.accessibility-indicator,
+.private-browsing-indicator{ 
+  height: unset !important;
+}
+.accessibility-indicator > hbox{ padding-block: 0 !important }
+
+.tabbrowser-tab{
+  height: calc(var(--tab-min-height) + 2 * var(--tab-block-margin,0px));
+}
+
+.tabbrowser-tab:only-of-type,
+.tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"]{
+  visibility: collapse !important;
+  min-height: 0 !important;
+  height: 0;
+}
+
+/* Fix window controls not being clickable */
+:root[tabsintitlebar] #toolbar-menubar[autohide="true"][inactive]{
+  transition: height 0ms steps(1) 80ms;
+}
+:where(#nav-bar){
+  border-inline: var(--uc-window-drag-space-width,0) solid var(--toolbar-bgcolor);
+}
+@media (-moz-platform: linux){
+  #TabsToolbar .titlebar-buttonbox{
+    -moz-box-align: stretch !important; /* Fx < 112 compatibility */
+    align-items: stretch !important;
+  }
+  #TabsToolbar > .titlebar-buttonbox-container > .titlebar-buttonbox > .titlebar-button{
+    transform: scale(0.8);
+    margin-inline: -3px !important;
+  }
+  #TabsToolbar .titlebar-button > .toolbarbutton-icon{ padding: 0 13px !important }
+}
+
+#tabbrowser-tabs:not([overflowing="true"]) ~ #alltabs-button{
+  display: none;
+}
+
+#tabbrowser-arrowscrollbox-periphery,
+#private-browsing-indicator-with-label,
+#TabsToolbar > .titlebar-buttonbox-container{
+  contain: strict;
+  contain-intrinsic-height: 0px;
+}
+#tabbrowser-arrowscrollbox-periphery{
+  contain-intrinsic-width: 36px;
+  padding-inline-end: 3px;
+}
+#private-browsing-indicator-with-label{
+  contain-intrinsic-width: 116px;
+}
+#TabsToolbar > .titlebar-buttonbox-container{
+  contain-intrinsic-width: var(--uc-window-control-width,138px);
+  margin-bottom: 0 !important;
+}
+@media  (-moz-platform: linux){
+  #TabsToolbar > .titlebar-buttonbox-container{
+    contain-intrinsic-width: var(--uc-window-control-width,105px);
+  }
+}
+@media  (-moz-platform: macos){
+  #TabsToolbar > .titlebar-buttonbox-container{
+    contain-intrinsic-width: var(--uc-window-control-width,72px);
+  }
+}
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/iconized_main_menu.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Adds icons to main menu items which were removed in Proton */
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before,
+#appMenu-protonMainView > .panel-subview-body > toolbarbutton > image{
+  fill: currentColor;
+  -moz-context-properties: fill;
+  margin-inline: 0 8px !important;
+}
+#appMenu-new-tab-button2{ list-style-image: url("chrome://browser/skin/new-tab.svg") }
+#appMenu-new-window-button2{ list-style-image: url("chrome://browser/skin/window.svg") }
+#appMenu-new-private-window-button2{ list-style-image: url("chrome://browser/skin/privateBrowsing.svg") }
+#appMenu-bookmarks-button{ list-style-image: url("chrome://browser/skin/bookmark-star-on-tray.svg") }
+#appMenu-history-button{ list-style-image: url("chrome://browser/skin/history.svg") }
+#appMenu-downloads-button{ list-style-image: url("chrome://browser/skin/downloads/downloads.svg") }
+#appMenu-passwords-button{ list-style-image: url("chrome://browser/skin/login.svg") }
+#appMenu-extensions-themes-button{ list-style-image: url("chrome://mozapps/skin/extensions/extension.svg") }
+#appMenu-print-button2{ list-style-image: url("chrome://global/skin/icons/print.svg") }
+#appMenu-save-file-button2{ list-style-image: url("chrome://browser/skin/save.svg") }
+#appMenu-find-button2{ list-style-image: url("chrome://global/skin/icons/search-glass.svg") }
+#appMenu-settings-button{ list-style-image: url("chrome://global/skin/icons/settings.svg") }
+#appMenu-more-button2{ list-style-image: url("chrome://global/skin/icons/developer.svg") }
+#appMenu-help-button2{ list-style-image: url("chrome://global/skin/icons/info.svg") }
+#appMenu-quit-button2{ list-style-image: url("chrome://devtools/skin/images/search-clear.svg") }
+/* Use account-button icon for signed in sync item */
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before{
+  display: flex;
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-image: var(--avatar-image-url)
+}
+/* Add somewhat hacky separator to zoom controls so it looks consistent */
+#appMenu-protonMainView > .panel-subview-body::after{
+  content: "";
+  display: flex;
+  border-bottom: 1px solid var(--panel-separator-color);
+  margin: var(--panel-separator-margin);
+}
+
+#appMenu-find-button2 ~ *{
+  -moz-box-ordinal-group: 2; /* Fx < 112 compatibility */
+  order: 2;
+}
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/iconized_main_menu.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Adds icons to main menu items which were removed in Proton */
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before,
+#appMenu-protonMainView > .panel-subview-body > toolbarbutton > image{
+  fill: currentColor;
+  -moz-context-properties: fill;
+  margin-inline: 0 8px !important;
+}
+#appMenu-new-tab-button2{ list-style-image: url("chrome://browser/skin/new-tab.svg") }
+#appMenu-new-window-button2{ list-style-image: url("chrome://browser/skin/window.svg") }
+#appMenu-new-private-window-button2{ list-style-image: url("chrome://browser/skin/privateBrowsing.svg") }
+#appMenu-bookmarks-button{ list-style-image: url("chrome://browser/skin/bookmark-star-on-tray.svg") }
+#appMenu-history-button{ list-style-image: url("chrome://browser/skin/history.svg") }
+#appMenu-downloads-button{ list-style-image: url("chrome://browser/skin/downloads/downloads.svg") }
+#appMenu-passwords-button{ list-style-image: url("chrome://browser/skin/login.svg") }
+#appMenu-extensions-themes-button{ list-style-image: url("chrome://mozapps/skin/extensions/extension.svg") }
+#appMenu-print-button2{ list-style-image: url("chrome://global/skin/icons/print.svg") }
+#appMenu-save-file-button2{ list-style-image: url("chrome://browser/skin/save.svg") }
+#appMenu-find-button2{ list-style-image: url("chrome://global/skin/icons/search-glass.svg") }
+#appMenu-settings-button{ list-style-image: url("chrome://global/skin/icons/settings.svg") }
+#appMenu-more-button2{ list-style-image: url("chrome://global/skin/icons/developer.svg") }
+#appMenu-help-button2{ list-style-image: url("chrome://global/skin/icons/info.svg") }
+#appMenu-quit-button2{ list-style-image: url("chrome://devtools/skin/images/search-clear.svg") }
+/* Use account-button icon for signed in sync item */
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before{
+  display: flex;
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-image: var(--avatar-image-url)
+}
+/* Add somewhat hacky separator to zoom controls so it looks consistent */
+#appMenu-protonMainView > .panel-subview-body::after{
+  content: "";
+  display: flex;
+  border-bottom: 1px solid var(--panel-separator-color);
+  margin: var(--panel-separator-margin);
+}
+
+#appMenu-find-button2 ~ *{
+  -moz-box-ordinal-group: 2; /* Fx < 112 compatibility */
+  order: 2;
+}
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/newtab_button_always_on_hover.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Always show tab close button on hover and never otherwise */
+#tabbrowser-tabs #tabs-newtab-button{
+  display: none;
+}
+#tabbrowser-tabs:hover #tabs-newtab-button{
+  display: flex !important;
+  align-items: center; /* Fx < 112 compatibility */
+}
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/privatemode_indicator_as_menu_button.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Removes the private-browsing-mode indicator from tabs toolbar and changes the menu-button icon to the private-browsing indicator in private windows */
+
+#private-browsing-indicator-with-label,
+.private-browsing-indicator{ display: none }
+:root[privatebrowsingmode="temporary"] #PanelUI-menu-button{
+  list-style-image: url("chrome://global/skin/icons/indicator-private-browsing.svg") !important;
+}
+
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/round_ui_items.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Make bunch of things in the main UI round */
+
+:root{ --toolbarbutton-border-radius: 24px !important }
+#urlbar-input-container > box:hover,
+#urlbar-input-container > box[open],
+#main-menubar >  menu,
+.titlebar-button:hover,
+#scrollbutton-up,
+#scrollbutton-down,
+.tab-close-button,
+.close-icon > image,
+#page-action-buttons > :hover,
+.panel-arrowcontent,
+.urlbarView-row-inner,
+.search-one-offs button,
+.subviewbutton-back,
+.toolbaritem-combined-buttons > toolbarbutton,
+#PopupSearchAutoComplete,
+menupopup{ border-radius: 18px }
+
+button,
+.tab-background{ border-radius: 30px !important; }
+
+.panel-arrowcontent{ margin-inline-end: 0 !important; }
+.panel-arrow{ margin-inline: 17px !important; }
+
+menupopup{ -moz-appearance: none !important; overflow: -moz-hidden-unscrollable !important; }
+
+.tabbrowser-tab[selected]::after,
+.tabbrowser-tab[beforeselected-visible]::after{ border-color: transparent !important; }
+
+#nav-bar{ box-shadow: none !important; margin-top: 3px }
+.tab-line{ display: none }
+
+.tab-background[selected]{
+  border-top-width: 2px !important;
+  border-top-color: var(--lwt-tab-line-color) !important;
+}
+.tabbrowser-tab[selected]{ z-index: auto !important; }
+
+.urlbar-icon,
+toolbar toolbarbutton:not(#back-button):not(.bookmark-item):not(.titlebar-button) > .toolbarbutton-icon{  border-radius: 0px !important; clip-path: circle() }
+
+menugroup:hover > menuitem{ clip-path: circle() }
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/tab_close_button_always_on_hover.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Always show tab close button on hover and never otherwise */
+.tabbrowser-tab .tab-close-button{
+  display:none;
+}
+.tabbrowser-tab:not([pinned]):hover .tab-close-button{
+  display: flex !important;
+  align-items: center;
+}
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/tab_closing_animation.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* This style simply makes the tab stay visible while it is being closed as well as makes the transition a bit slower */
+
+.tabbrowser-tab:not([pinned],[fadein]){
+  transition-duration: 240ms, 240ms !important;
+  transition-timing-function: ease-out, ease-out !important;
+  visibility: visible !important;
+}
+.tab-content:not([fadein],[pinned])
+.tab-icon-pending:not([fadein]),
+.tab-icon-image:not([fadein]),
+.tab-label:not([fadein]){
+  visibility: visible !important;
+}
+.tab-label:not([fadein]){
+  display: flex !important;
+}
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/tab_effect_scale_onclick.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+.tab-stack{ transition: transform 20ms linear }
+.tabbrowser-tab:active .tab-stack{
+  transform: scale(0.9);
+}
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/urlbar_centered_text.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+#urlbar:not([focused]) #urlbar-input, /* ID for Firefox 70 */
+#urlbar:not([focused]) .urlbar-input{ text-align: center !important; }
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/urlbar_info_icons_on_hover.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Hides info icons (except remote control icon) on the left side of urlbar and shows them when urlbar is hovered. */
+
+#urlbar-search-button,
+#tracking-protection-icon-container,
+#identity-box,
+#identity-box.extensionPage #identity-icon-label{
+  max-width: 0px;
+  transition: max-width 100ms linear !important;
+  overflow: hidden;
+}
+
+#identity-box.extensionPage{ max-width: 32px }
+
+#urlbar:hover #urlbar-input-container > box,
+#urlbar:hover #identity-box.extensionPage #identity-icon-label{
+  max-width: 300px;
+}
+
+
+
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/vertical_bookmarks_toolbar.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Makes bookmarks toolbar appear vertically at the left side of the window */
+
+@-moz-document url(chrome://browser/content/browser.xhtml){
+
+  :root:not([inDOMFullscreen]){
+    --uc-vertical-toolbar-width: 25px;
+  }
+  #navigator-toolbox{ position: relative }
+  #PersonalToolbar{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    width: var(--uc-vertical-toolbar-width,0);
+    min-width: unset !important;
+    /* These create a empty area to the bottom of the toolbar, which is to mask a fact that we don't know exactly how high the toolbar should be */
+    height: 100vh;
+    max-height: 100vh !important; 
+    padding-bottom: 120px !important;
+    padding-inline: 2px !important;
+    
+  }
+  #PersonalToolbar .toolbarbutton-1{
+    --toolbarbutton-inner-padding: 10px !important;
+  }
+  #PersonalToolbar #PlacesChevron{
+    display: none;
+  }
+  #PersonalToolbar > #personal-bookmarks{
+    overflow-y: auto;
+    scrollbar-width: none;
+    height: 100vh;
+  }
+  
+  #PlacesToolbar,
+  #PlacesToolbarDropIndicatorHolder{
+    -moz-box-orient: vertical !important; /* Can be removed with Firefox 112 */
+    flex-direction: column;
+  }
+  
+  #PersonalToolbar #PlacesToolbarItems{
+    display: flex !important;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  #PersonalToolbar > toolbaritem{
+    justify-content: center;
+  }
+  #PersonalToolbar #PlacesToolbarItems > toolbarseparator{
+    height: 10px;
+    background-color: currentColor;
+    background-clip: padding-box;
+    border-block: 3px solid transparent !important;
+  }
+
+  #PersonalToolbar #PlacesToolbarItems > .bookmark-item{
+    padding-block: 4px !important;
+    margin-inline: 0 !important;
+  }
+  
+  #browser,
+  #browser-bottombox,
+  #main-window > body::after, /* This selector is for compatibility with tabs_below_content.css */
+  #customization-container{
+    margin-left: var(--uc-vertical-toolbar-width,0);
+  }
+  :root:is([chromehidden~="toolbar"],[sizemode="fullscreen"]) > body > #browser,
+  :root:is([chromehidden~="toolbar"],[sizemode="fullscreen"]) > body > #browser-bottombox,
+  #main-window:is([chromehidden~="toolbar"],[sizemode="fullscreen"]) > body::after,
+  :root:is([chromehidden~="toolbar"],[sizemode="fullscreen"]) > body > #customization-container{
+    margin-left: 0;
+  }
+  /* You should probably disable this if you have Firefox < 113 */
+  #PersonalToolbar #PlacesToolbarItems{
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+  }
+  
+}
+
+
+
+
+.tab-background[selected]{
+  box-shadow: 0 0 0 2px var(--tab-line-color, var(--tabs-border-color, #fab387)) !important;
+  border-radius: 30px !important;
+}

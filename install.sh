@@ -43,7 +43,7 @@ cd $AUR
 makepkg -si
 
 #Install apps/Instalar apps
-apps=neovim hyprland-git waybar-hyprland-git cava python rustup kitty fish rofi-lbonn-wayland xdg-desktop-portal-hyprland-git tty-clock-git swaylockd grim slurp starship jq dunst wl-clipboard wl-clipboard-persist-git swaylock-effects-git swww sddm-git
+apps=neovim hyprland-git waybar-hyprland-git cava python rustup kitty fish rofi-lbonn-wayland xdg-desktop-portal-hyprland-git tty-clock-git swaylockd grim slurp starship jq dunst wl-clipboard wl-clipboard-persist-git swaylock-effects-git swww sddm-git vscodium github-desktop firefox spotify 
 
 if [ $LANG = "pt_BR.UTF-8" ]
 then
@@ -95,6 +95,7 @@ then
     sudo systemctl enable sddm.service
     sudo cp -rv ./mirrorlist /etc/pacman.d/mirrorlist
     sudo cp -rv ./pacman.conf /etc/pacman.conf
+    sudo cp -rv ./spotify.desktop /usr/share/applications/spotify.desktop
 
 else
     

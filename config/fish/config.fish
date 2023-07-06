@@ -27,6 +27,7 @@ set -g __fish_git_prompt_char_upstream_equal ''
 set -g __fish_git_prompt_char_upstream_prefix ''''
 
 # Directory abbreviations
+abbr -a -g ls 'lsd'
 abbr -a -g l 'lsd'
 abbr -a -g la 'lsd -A'
 abbr -a -g ll 'lsd -lh'

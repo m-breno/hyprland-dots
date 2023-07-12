@@ -43,7 +43,8 @@ cd $AUR
 makepkg -si
 
 #Install apps/Instalar apps
-apps=neovim hyprland-git waybar-hyprland-git cava python rustup kitty fish rofi-lbonn-wayland xdg-desktop-portal-hyprland-git tty-clock-git swaylockd grim slurp starship jq dunst wl-clipboard wl-clipboard-persist-git swaylock-effects-git swww sddm-git vscodium github-desktop firefox spotify 
+apps="neovim hyprland-git waybar-hyprland-git cava python rustup kitty fish rofi-lbonn-wayland xdg-desktop-portal-hyprland-git tty-clock-git swaylock-effects grim slurp starship jq dunst wl-clipboard wl-clip-persist-git swaylock-effects-git swww sddm-git vscodium github-desktop firefox spotify lsd thunar pavucontrol nerd-fonts-meta catppuccin-mocha-dark-cursors catppuccin-mocha-light-cursors catppuccin-gtk-theme-mocha catppuccin-mocha-grub-theme-git"
+
 
 if [ $LANG = "pt_BR.UTF-8" ]
 then
@@ -68,7 +69,7 @@ else
       3) Choose. Choose the packages you want to install.
       Your choice:"
 fi
-
+yay -S --noconfirm $apps
 
 #Copy dotfiles
 if [ $LANG = "pt_BR.UTF-8" ]
@@ -93,12 +94,15 @@ then
     mkdir ~/.config
     cp -rv ./config/* ~/.config/
     sudo systemctl enable sddm.service
+    sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+    sudo pacman-key --lsign-key 3056513887B78AEB
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
     sudo cp -rv ./mirrorlist /etc/pacman.d/mirrorlist
     sudo cp -rv ./pacman.conf /etc/pacman.conf
     sudo cp -rv ./spotify.desktop /usr/share/applications/spotify.desktop
-
 else
-    
+  echo "ok"    
 fi
 if [ $LANG = "pt_BR.UTF-8" ]
     then

@@ -1,15 +1,20 @@
-format="$all"
+right_format='$cmd_duration'
 
-# Prompt symbols 
+format='''
+[╭─╴$directory $all](bold #fab387)
+[╰╴$character](bold #fab487)'''
+
+add_newline = false
+
+# Prompt symbols
 [character]
-success_symbol = "[🞈](#fab387 bold)"
-error_symbol = "[🞈](#f38ba8)"
-vicmd_symbol = "[🞈](#f9e2af)"
+success_symbol = "[🞈 ❯](#fab387 bold)"
+error_symbol = "[🞈 ❯](#f38ba8)"
+vicmd_symbol = "[🞈 ❯](#f9e2af)"
 
 [directory]
-format = "[]($style)[(bg:#fab387 fg:#fe640b)$path](bg:#fab387 fg:#fe640b)[ ]($style)"
+format = "[]($style)[(bg:#fab387 fg:#fe640b)$path](bg:#fab387 fg:#1e1e2e)[]($style)"
 style = "bg:#1e1e2e fg:#fab387"
 
-[git_branch]
-format = "[]($style)[[ ](bg:#fab387 fg:#fe640b bold)$branch](bg:#fab387 fg:#fe640b)[ ]($style)"
-style = "bg:#1e1e2e fg:#fab387"
+[line_break]
+disabled = true

@@ -6,6 +6,6 @@ scripts=$config/scripts
 
 
 # waybar
-$scripts/launch_waybar &
+kill $(pidof waybar) ; waybar &
 $scripts/tools/dynamic &
 

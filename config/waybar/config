@@ -10,7 +10,7 @@
     "margin-bottom":-11,
     //"margin-top":5,
     "modules-left": ["wlr/workspaces"],
-    "modules-right": ["tray","volume","brightness","battery","custom/cycle_wall","custom/expand","clock"],
+    "modules-right": ["volume","brightness","battery","custom/cycle_wall","custom/expand","clock"],
     "modules-center": ["hyprland/window"],
     // Modules configuration
 

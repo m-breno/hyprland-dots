@@ -1,1 +1,1 @@
-{"class": "playing", "text": "Curso em V\u00eddeo - Criando o primeiro Reposit\u00f3rio - Curso de Git e GitHub ", "tooltip": "Criando o primeiro Reposit\u00f3rio - Curso de Git e GitHub\nby Curso em V\u00eddeo\n(firefox.instance668)"}
+{"class": "none", "text": ""}

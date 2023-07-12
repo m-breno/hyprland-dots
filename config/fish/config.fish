@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
         #pokemon-colorscripts -r --no-title &
 	starship init fish | source &
-	thefuck --alias | source &
+	#thefuck --alias | source &
 	~/.config/fish/tty.sh &
 end
 
@@ -86,6 +86,7 @@ abbr -a -g wloff 'rfkill block wlan'                                # Block wlan
 abbr -a -g wlon 'rfkill unblock wlan'                               # Unblock wlan, start wifi connection
 abbr -a -g ff 'firefox'                                             #
 abbr -a -g code 'vscodium'                                          #
+abbr -a -g n 'nvim'                                                 #
 
 # Make su launch fish
 function su
@@ -105,3 +106,10 @@ set XDG_CURRENT_DESKTOP Hyprland
 
 # Created by `pipx` on 2022-09-11 05:02:32
 set PATH $PATH /home/breno/.local/bin
+
+
+if status is-interactive
+	function echo_prompt --on-event fish_postexec
+		echo ""
+	end
+end

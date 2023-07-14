@@ -36,6 +36,7 @@ abbr -a -g d 'dirs'
 abbr -a -g cp 'cp -rv'
 abbr -a -g rm 'rm -rv'
 abbr -a -g mv 'mv -v'
+abbr -a -g mkdir 'mkdir -pv'
 
 # Git abbreviations
 abbr -a -g gcl 'git clone --depth 1'
@@ -85,7 +86,6 @@ abbr -a -g ips 'ip link show'                                       # Get networ
 abbr -a -g wloff 'rfkill block wlan'                                # Block wlan, killing wifi connection
 abbr -a -g wlon 'rfkill unblock wlan'                               # Unblock wlan, start wifi connection
 abbr -a -g ff 'firefox'                                             #
-abbr -a -g code 'vscodium'                                          #
 abbr -a -g n 'nvim'                                                 #
 
 # Make su launch fish
@@ -113,3 +113,4 @@ if status is-interactive
 		echo ""
 	end
 end
+fish_add_path /home/breno/.spicetify

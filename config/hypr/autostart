@@ -8,15 +8,14 @@ scripts=$config/scripts
 dunst &
 
 # wallpaper
-$scripts/wall $config/wallpapers/cloud.png &
+swaybg -i $config/wallpapers/train.jpg &
 
 # effects
 $scripts/rgb &
 
 # other
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 
 hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 24 &
 wl-clip-persist --clipboard both &
-/usr/lib/xfce-polkit/xfce-polkit &
+/usr/lib/polkit-kde-authentication-agent-1 &

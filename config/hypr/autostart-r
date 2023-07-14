@@ -6,6 +6,6 @@ scripts=$config/scripts
 
 
 # waybar
-kill $(pidof waybar) ; waybar &
+pkill waybar ; waybar &
 $scripts/tools/dynamic &
 

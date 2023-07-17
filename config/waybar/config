@@ -1,19 +1,19 @@
 {
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 32, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     //"margin": 10,
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["cpu", "memory", "temperature", "hyprland/window"],
+    "modules-left": ["clock", "clock#date", "pulseaudio"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "clock"],
+    "modules-right": ["network", "battery", "backlight"],
     // Modules configuration
      "wlr/workspaces": {
          "format": "{icon}",
-         "on-scroll-up": "hyprctl dispatch workspace e-1",
-         "on-scroll-down": "hyprctl dispatch workspace e+1",
+         "on-scroll-up": "hyprctl dispatch workspace -1",
+         "on-scroll-down": "hyprctl dispatch workspace +1",
          "on-click": "activate",
          "format-icons": {
              "1": "",
@@ -23,7 +23,16 @@
              "5": "",
              "6": "󰓇",
              "7": "",
-         }
+         },
+         "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+    },
      },
     "tray": {
         // "icon-size": 21,
@@ -32,7 +41,10 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d/%m}"
+        "format": "󰥔 {:%R}",
+    },
+    "clock#date": {
+    "format": "󰃭 {:%a, %d de %b}"
     },
     "cpu": {
         "format": "󰍛 {usage}%",
@@ -52,16 +64,10 @@
     "backlight": {
         // "device": "acpi_video1",
         "scroll-step": 10,
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰽤", "󰽥", "󰽣", "󰽦", "󰽢"]
     },
     "battery": {
-        "states": {
-            "full": 99,
-            "good": 70,
-            "warning": 30,
-            "critical": 15
-        },
         "format": "{capacity}% {icon}",
         "format-charging": ["{capacity}% 󰢜", "{capacity}% 󰂆", "{capacity}% 󰂇", "{capacity}% 󰂈", "{capacity}% 󰢝", "{capacity}% 󰂉", "{capacity}% 󰢞", "{capacity}% 󰂋", "{capacity}% 󰂅", "{capacity}% 󰢜"],
         //"format-charging": "{capacity}% 󰂄",
@@ -73,10 +79,10 @@
     },
     "pulseaudio": {
         "scroll-step": 10, // %, can be a float
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% 󰂯 {icon}",
-        "format-bluetooth-muted": "{volume}% 󰖁 󰂯 {icon}",
-        "format-muted": "{volume}% 󰖁",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂯 {icon} {volume}%",
+        "format-bluetooth-muted": "󰖁 󰂯 {icon} {volume}%",
+        "format-muted": "󰖁 {volume}%",
         "format-icons": {
             "headphone": "󰋋",
             "hands-free": "󱡏",
@@ -88,4 +94,13 @@
         },
         "on-click": "pamixer -t"
     },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} 󰤥",
+        "format-ethernet": "Conectado 󰈀",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "format-linked": "Conectado, sem internet 󰤦",
+        "format-disconnected": "Desconectado 󰤭",
+        "on-click": "kitty --class kitty-float nmtui"
+    }
 }

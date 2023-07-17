@@ -8,7 +8,7 @@ scripts=$config/scripts
 dunst &
 
 # wallpaper
-swaybg -i $config/wallpapers/train.jpg &
+swaybg -i $config/wallpapers/cat.jpg &
 
 # effects
 $scripts/rgb &

@@ -1,0 +1,28 @@
+{
+    "workbench.colorCustomizations": {
+        "tab.activeBorder": "#00000000"
+    },
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "catppuccin.accentColor": "peach",
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.list.smoothScrolling": true,
+    "editor.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "editor.cursorBlinking": "expand",
+    "cSpell.language": "pt-BR",
+    "files.defaultLanguage": "pt_BR",
+    "editor.wordWrap": "on",
+    "git.autofetch": true,
+    "editor.parameterHints.enabled": false,
+    "keyboard.layout": "br",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "vscode_custom_css.imports": [
+        "file:///home/breno/.config/Code/style.css"
+    ],
+    "workbench.editor.untitled.hint": "hidden",
+    "git.enableSmartCommit": true,
+    "files.autoSave": "afterDelay",
+}

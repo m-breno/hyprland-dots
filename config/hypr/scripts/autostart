@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+#<==Variables==>
+config=$HOME/.config/hypr
+scripts=$config/scripts
+comp=$config/components
+
+#<==Notifications==>
+mako -c $comp/mako/config &
+
+#<==Wallpaper==>
+hyprpaper &
+
+#<==Keyboard=backlight==>
+$scripts/kb-backlight
+
+#<==Other==>
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+
+hyprctl setcursor Catppuccin-Mocha-Dark-Cursors 24 &
+wl-clip-persist --clipboard both &
+/usr/lib/polkit-kde-authentication-agent-1 &
+
+#<==Apps==>
+spotify --no-zygote &
+
+sleep 5
+hyprctl dispatch focusmonitor 0
+hyprctl dispatch workspace 6
+hyprctl dispatch focusmonitor 1

@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# Variables
+config=$HOME/.config/hypr
+scripts=$config/scripts
+comp=$config/components
+
+# waybar
+pkill waybar
+waybar -c $comp/waybar/config -s $comp/waybar/style.css &
+waybar -c $comp/waybar/config-mon2 -s $comp/waybar/style-mon2.css &

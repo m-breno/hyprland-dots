@@ -1,0 +1,13 @@
+sort=-priority
+on-middle-click=exec makoctl dimiss -a
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
+font=JetBrainsMono Nerd font
+background-color=#1E1E2E80
+text-color=#CDD6F4
+border-size=3
+border-color=#CDA6F7
+border-radius=15
+progress-color=source #CBA6F7
+default-timeout=15000
+output=HDMI-A-1
+layer=overlay

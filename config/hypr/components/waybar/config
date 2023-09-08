@@ -1,0 +1,119 @@
+{
+    "layer": "top",
+    "output": "eDP-1",
+    "margin-top": 5,
+    "margin-right": 5,
+    "margin-bottom": -3,
+    "margin-left": 5,
+    "spacing": 0,
+
+    "modules-left": ["hyprland/window", "custom/spotify", "tray"],
+    "modules-center": ["wlr/workspaces"],
+    "modules-right": ["cpu", "memory", "pulseaudio", "backlight", "battery", "clock"],
+
+     "wlr/workspaces": {
+        "format": "{icon}",
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+        "on-click": "activate",
+        "format-icons": {
+           "1": "一",
+           "2": "二",
+           "3": "三",
+           "4": "四",
+           "5": "五",
+           "6": "六",
+           "7": "七",
+           "8": "八",
+           "9": "九"
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": []
+        }
+    },
+
+    "hyprland/window": {
+        "max-length": 32,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "Firefox",
+            "(.*) - Code - OSS": "VSCode"
+        },
+        "separate-outputs": true
+    },
+
+    "custom/spotify": {
+        "exec": "python $HOME/.config/hypr/scripts/mediaplayer.py --player spotify",
+        "format": " {}",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-scroll-down": "playerctl next",
+        "on-scroll-up": "playerctl previous",
+        "max-length": 32
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "cpu": {
+        "format": "󰍛 {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "󰆼 {}%"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 10,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂯 {icon} {volume}%",
+        "format-bluetooth-muted": "󰖁 󰂯 {icon} Mutado",
+        "format-muted": "󰖁 Mutado",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󱡏",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pamixer -t",
+        "on-click-right": "pavucontrol"
+    },
+
+    "backlight": {
+        "scroll-step": 10,
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰽤", "󰽥", "󰽣", "󰽦", "󰽢"]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "tooltip=format": "{time} restantes",
+        "format-full": "󰁹 {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁽", "󰁾", "󰁿", "󰂁", "󰂁", "󰁹"],
+        "full-at": 99
+    },
+
+    "clock": {
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format": "󰥔 {:%R}",
+        "format-alt": "󰃭 {:%a, %d de %b}"
+    }
+}

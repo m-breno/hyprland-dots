@@ -34,25 +34,39 @@ abbr -a -g ll 'lsd -lh'
 abbr -a -g lal 'lsd -Alh'
 abbr -a -g d 'dirs'
 abbr -a -g cp 'cp -rv'
-abbr -a -g rm 'rm -rv'
+abbr -a -g rm 'rm -rfv'
 abbr -a -g mv 'mv -v'
 abbr -a -g mkdir 'mkdir -pv'
 
 # Git abbreviations
-abbr -a -g gcl 'git clone --depth 1'
+abbr -a -g gcl 'git clone'
 abbr -a -g gi 'git init'
 abbr -a -g ga 'git add'
 abbr -a -g gc 'git commit -m'
 abbr -a -g gp 'git push origin master'
 
-
 # Locale
 export LANG="pt_BR.UTF-8"
 export LC_ALL="pt_BR.UTF-8"
 
-# Exports
+# Env-vars
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export NIMBLE_DIR="$XDG_DATA_HOME/nimble"
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export RANDFILE="$XDG_DATA_HOME/rnd"
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+export HISTFILE="$XDG_STATE_HOME"/bash/history
 
 # Term
 switch "$TERM_EMULATOR"
@@ -87,25 +101,19 @@ abbr -a -g wloff 'rfkill block wlan'                                # Block wlan
 abbr -a -g wlon 'rfkill unblock wlan'                               # Unblock wlan, start wifi connection
 abbr -a -g ff 'firefox'                                             #
 abbr -a -g n 'nvim'                                                 #
-
+abbr -a -g icat 'kitten icat'                                       # Show images in terminal
+abbr -a -g wget 'wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'       #
 # Make su launch fish
 function su
    command su --shell=/usr/bin/fish $argv
 end
 
-function wa
-    set -f APPID "6HV6YJ-QGK36VKQQJ" # Get one at https://products.wolframalpha.com/api/
-    echo $argv | string escape --style=url | read question_string
-    set -f url "https://api.wolframalpha.com/v1/result?appid="$APPID"&i="$question_string
-    curl -s $url
-end
-
-set MOZ_ENABLE_WAYLAND 1
-set XDG_CURRENT_DESKTOP Hyprland
+#set MOZ_ENABLE_WAYLAND 1
+#set XDG_CURRENT_DESKTOP Hyprland
 
 
 # Created by `pipx` on 2022-09-11 05:02:32
-set PATH $PATH /home/breno/.local/bin
+set PATH $PATH /home/breno/.local/bin /opt/flutter/bin
 
 
 if status is-interactive

@@ -1,20 +1,20 @@
 right_format='$cmd_duration'
 
 format='''
-[╭─╴$directory $all](bold #fab387)
-[╰╴$character](bold #fab487)'''
+[╭─$directory $all](bold #cba6f7)
+[╰╴$character](bold #cba6f7)'''
 
 add_newline = false
 
 # Prompt symbols
 [character]
-success_symbol = "[🞈 ❯](#fab387 bold)"
+success_symbol = "[🞈 ❯](#cba6f7 bold)"
 error_symbol = "[🞈 ❯](#f38ba8)"
 vicmd_symbol = "[🞈 ❯](#f9e2af)"
 
 [directory]
-format = "[]($style)[(bg:#fab387 fg:#fe640b)$path](bg:#fab387 fg:#1e1e2e)[]($style)"
-style = "bg:#1e1e2e fg:#fab387"
+format = "[]($style)[(bg:#cba6f7 fg:#fe640b)$path](bg:#cba6f7 fg:#1e1e2e)[]($style)"
+style = "bg:#1e1e2e00 fg:#cba6f7"
 
 [line_break]
 disabled = true

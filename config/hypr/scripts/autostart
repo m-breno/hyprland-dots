@@ -25,6 +25,7 @@ wl-clip-persist --clipboard both &
 spotify --no-zygote &
 
 sleep 5
+hyprctl dispatch killactive
 hyprctl dispatch focusmonitor 0
 hyprctl dispatch workspace 6
 hyprctl dispatch focusmonitor 1

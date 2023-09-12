@@ -139,6 +139,7 @@ alias zshrc="nvim $zconf/.zshrc"
 
 # Other alias
 alias h="history"
+alias modx="chmod +x"
 alias upd="yay -Syu --noconfirm"
 alias please="sudo"
 alias untar="tar -zxvf"

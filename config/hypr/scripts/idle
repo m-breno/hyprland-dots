@@ -1,0 +1,6 @@
+#!/bin/bash
+swayidle -w \
+    before-sleep 'playerctl pause' \
+    timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' \
+    timeout 135 '$XDG_CONFIG_HOME/hypr/scripts/lock' \
+    timeout 300 'systemctl suspend'

@@ -1,5 +1,4 @@
 sort=-priority
-on-middle-click=exec makoctl dimiss -a
 on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 font=JetBrainsMono Nerd font
 background-color=#1E1E2E80

@@ -1,4 +1,4 @@
-right_format='$cmd_duration'
+right_format = '$cmd_duration'
 
 format='''
 [╭─$directory $all](bold #cba6f7)

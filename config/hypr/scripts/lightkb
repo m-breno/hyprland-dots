@@ -2,17 +2,12 @@
 
 dk=4
 
-function lightkbd() {
-    set -e
-    while sleep 0.1 ; do
-	echo 1 > $path/brightness
-    done
-}
-
 if [ "$1" = "" ] ; then
     path=/sys/class/leds/input$dk::scrolllock
 else
     path=/sys/class/leds/input$1::scrolllock
 fi
 
-(lightkbd) &
+while sleep 0.1 ; do
+    echo 1 > $path/brightness
+done

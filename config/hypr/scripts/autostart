@@ -12,7 +12,7 @@ mako -c $comp/mako/config &
 hyprpaper &
 
 #<==Keyboard=backlight==>
-$scripts/kb-backlight
+$scripts/lightkb
 
 #<==Other==>
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &

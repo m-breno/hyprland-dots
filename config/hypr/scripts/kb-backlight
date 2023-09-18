@@ -1,16 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-kbdname="SINO WEALTH USB KEYBOARD"
-path=""
-
-
-function finddev() {
-    for dev in /sys/class/leds/input*scrolllock ; do
-	if [ "$(cat $dev/device/name)" = "$kbdname" ] ; then
-	    echo $dev
-	fi
-    done
-}
+dk=4
 
 function lightkbd() {
     set -e
@@ -20,14 +10,9 @@ function lightkbd() {
 }
 
 if [ "$1" = "" ] ; then
-    path=/sys/class/leds/input4::scrolllock
+    path=/sys/class/leds/input$dk::scrolllock
 else
     path=/sys/class/leds/input$1::scrolllock
-fi
-
-if [ "$path" = "" ] ; then
-    echo "Home keyboard not found!"
-    exit 1
 fi
 
 (lightkbd) &

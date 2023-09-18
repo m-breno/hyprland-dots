@@ -3,35 +3,56 @@
 ## System info
  - **OS:** Arch Linux
  - **Wayland Compositor:** Hyprland
+ - **Shell:** ZSH
+ - **Terminal:** Kitty
+ - **Prompt:** Starship
  - **Bar:** Waybar (hyprland fork)
- - **Runner:** Rofi
+ - **Runner/Power menu:** Rofi
  - **Wallpaper daemon:** Hyprpaper
- - **Lockscreen:** TODO: add a lockscreen
+ - **Lockscreen:** swaylock(-effects)
  - **Editor:** VSCode/NeoVim
  - **Browser:** Firefox w/ userChrome.css
 
 ## Install instructions
- - Clone this repository:
+### Hyprland/Starship/Waybar/
+ - Create an temporary folder to organize your home (opitional):
  ```
- mkdir tmp && cd tmp && git clone https://github.com/m-breno/hyprland-dots && cd ./hyprland-dots
+ mkdir $HOME/tmp && cd $HOME/tmp
  ```
- - Copy the dots:
+ - **Clone this repository:**
+ ```
+ git clone https://github.com/m-breno/hyprland-dots && cd ./hyprland-dots
+ ```
+ - **Copy the dots:**
  ```
  cp -r ./config/* ~/.config/`
  ```
 
-## Firefox
+### ZSH
+To make the settings work with the XDG-based directories you need to:
+ - **Edit `/etc/zshenv` and add the following line:**
+ ```
+ ZDOTDIR=$HOME/.config/zsh
+ ``` 
+
+### Firefox
  If you want to theme your firefox do the following:
 
- - Open a new tab, and paste:
+ - **Open a new tab, and paste:**
  ```
  about:config
  ```
- Accept, then, in the input bar, paste:
+ - **Accept, then, in the input bar, paste:**
  ```
  toolkit.legacyUserProfileCustomizations.stylesheets
  ```
- and click the swap symbol to change to `true`
+ - **Click the swap symbol to change the value to `true`**
+
+ - navigate to `~/.mozilla/firefox/`your user's folder(usually *something*`.default-release`)
+
+ - Create an folder called `chorme`
+
+ now copy `others/userChrome.css` (in the dots folder) to `chrome/userChrome.css` (in the firefox folder)
 
 ## TODO:
 - [ ] Create an install script
